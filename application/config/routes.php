@@ -12,6 +12,7 @@ $route['admin_logout'] = 'MainLinks_Control/admin_logout';
 
 $route['admin_home'] = 'MainLinks_Control/admin_home';
 $route['Add_Mark_Sheet'] = 'MainLinks_Control/Add_Mark_Sheet';
+$route['save_marksheet'] = 'Add_marksheet/save_marksheet';
 
 
 

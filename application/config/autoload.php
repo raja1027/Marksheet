@@ -135,4 +135,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 //$autoload['model'] = array();
-$autoload['model'] = array('Property_Modal','Login_Modal','Location_Modal','MStoreLocation_Modal','MStoreAccount_Modal','MStoreLadger_Modal','MStoreLogin_Modal','MStoreMaterialctr_Group_Modal','MStoreMaterialctr_Modal','MStoreTax_Modal','MStoreTaxationType_Modal','MStoreBillSundry_Modal','MStoreProductGroup_Modal','MStoreProducts_Modal','MStoreBillSeries_Modal','MStoreSale_Modal','MStorePurchase_Modal','MStoreGlobal_Modal','MStoreStockOut_Modal','MStoreStockIN_Modal','MStoreBranches_Modal','AdminLogin_Modal','AdminProductGroup_Modal','AdminMaterialctr_Group_Modal','AdminMaterialctr_Modal','AdminProducts_Modal','AdminBv_Modal','AdminFranchises_Modal','AdminPurchseOrder_Modal','DepoPurchseOrder_Modal','AdminStock_Modal','MStoreCard_Modal','AdminSale_Modal','Adminsave_user_signup_Modal');
+$autoload['model'] = array('Login_Modal','Add_marksheet_Modal');
