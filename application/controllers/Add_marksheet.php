@@ -6,14 +6,11 @@ class Add_marksheet extends CI_Controller
 	public function __construct()
 	{
         parent:: __construct();
-		// if(!$this->session->userdata("Global_logged_in"))
-		// {
-			// redirect("Login_Control/admin_login");
-		// }
     }
 
-	function save_marksheet()
+	public function save_marksheet()
 	{
+		//echo "dasdasdasd";
 		$student_name=$this->input->post('student_name');
 
 		$student_class=$this->input->post('student_class');
@@ -46,25 +43,24 @@ class Add_marksheet extends CI_Controller
 
 		$config['max_height']  = '768909';
 
-		$this->load->library('upload', $config);
+		$this->load->library('upload', $config); 
 
 		if ( ! $this->upload->do_upload('passport_size_photo'))
 		{
-			// $data=$this->Property_Modal->update_property_no_img_do($ownership,$location,$phone,$exphone,$pincode,$paddress,$cost,$bhk,$furnishing,$floornumbers,$food,$religion,$agent,$propertycategory,$propertytype,$handleby,$occupation,$bcondition,$facing,$areasize,$security_amt,$majority,$yesno,$chk1,$aboutproperty,$datevacant,$chk_mark_alloted,$dateallot,$dateexpectvac,$checked_aminities,$prop_id);
+			echo "Can't Upload Image";
 
 		}
 		else
 		{
 			$upload_data = $this->upload->data();
-			$file_property=$upload_data['file_name'];
+			$passport_size_photo=$upload_data['file_name'];
 
-			// $data=$this->Property_Modal->update_property_do($ownership,$location,$phone,$exphone,$pincode,$paddress,$cost,$bhk,$furnishing,$floornumbers,$food,$religion,$agent,$propertycategory,$propertytype,$handleby,$occupation,$bcondition,$facing,$areasize,$security_amt,$majority,$yesno,$chk1,$aboutproperty,$datevacant,$chk_mark_alloted,$dateallot,$dateexpectvac,$checked_aminities,$prop_id,$file_property);
+			$data=$this->Add_marksheet_Modal->add_marksheet_do($student_name,$student_class,$roll_no,$maths_marks,$phy_marks,$chem_marks,$hindi_marks,$english_marks,$passport_size_photo,$total_ontained_marks,$total_score_percentage);
 			
-			// if($data=='1')
-			// {
-				
-			// }
-		}
+			echo "Saved";
+		} 
+			// echo "Saved";
+		
 		
 	}
 

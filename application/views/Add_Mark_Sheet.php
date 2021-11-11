@@ -224,23 +224,9 @@
 							<div class="card-body">
 							
 								<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add Marksheet</button>
-							
-								<!--<form>-->
-									<div class="form-group">
-										<label>Enter City</label>
-										<input type="text" id="txt_city" class="form-control" placeholder="Enter City" />
-										<input type="hidden" id="txt_city_id" class="form-control" placeholder="City Id" />
-									</div>
-									<br/>
-									<button class="btn btn-success" id="btn_save_city">Save</button>
-									<button class="btn btn-success" id="btn_update_city" style="display:none;">Update</button>
-									<button class="btn btn-success" id="btn_new_city" style="display:none;">Add New City</button>
-									
-								<!--</form>-->
-								
 								<hr/>
 								
-								<table class="table table-bordered table-striped table-hover" id="example">
+								<!--<table class="table table-bordered table-striped table-hover" id="example">
 									<thead>
 										<tr>
 											<th>S.No.</th>
@@ -257,7 +243,7 @@
 											<th>Actions</th>
 										</tr>
 									</thead>
-								</table>
+								</table>-->
 								
 							</div>
 						</div>
@@ -324,15 +310,15 @@ $(document).ready(function(e)
 		formData.append('total_score_percentage', total_score_percentage);
 		
 		  $.ajax({
-			url:"<?=base_url('Add_marksheet/save_marksheet')?>",
+			url:"<?=base_url('save_marksheet')?>",
 			type: 'POST',
-			dataType:'json',
+			// dataType:'json',
 			contentType: false,
 			processData: false,
 			data:formData,
-			success:function(data)
+			success:function(msgdata)
 			{
-				
+				alert(msgdata);
 			}
 		});
 
@@ -412,186 +398,6 @@ function calculate_total_and_percent()
 	
 }
 
-
-$("#btn_save_city").on("click",function()
-{
-	var txt_city=$("#txt_city").val();
-	if(txt_city=="")
-	{
-		alert("Invalid City!");
-		$("#txt_city").focus();
-	}
-	else
-	{
-		$.ajax({
-			type:"POST",
-			url:'<?php echo base_url(); ?>save_new_city',
-			data:{txt_city:txt_city},
-			success:function(msg_data)
-			{
-				alert(msg_data);
-				get_all_cities();
-			}
-		});
-	}
-});
-
-
-$("#btn_update_city").on("click",function()
-{
-	var txt_city=$("#txt_city").val();
-	var txt_city_id=$("#txt_city_id").val();
-	
-	if(txt_city=="")
-	{
-		alert("Invalid City!");
-		$("#txt_city").focus();
-	}
-	else
-	{
-		$.ajax({
-			type:"POST",
-			url:'<?php echo base_url(); ?>btn_update_city',
-			data:{txt_city:txt_city,txt_city_id:txt_city_id},
-			success:function(msg_data)
-			{
-				alert(msg_data);
-				get_all_cities();
-				add_new();
-			}
-		});
-	}
-	
-});
-
-
-get_all_cities();
-
-function get_all_cities()
-{
-	if($.fn.DataTable.isDataTable('#example'))
-	{
-		$('#example').dataTable().fnClearTable();
-		$('#example').dataTable().fnDestroy();
-	}
-	$.ajax({
-		type:"POST",
-		url:'<?php echo base_url(); ?>fetch_all_cities',
-		dataType:'json',
-		success:function(msg_data)
-		{
-			if(msg_data.length>0)
-			{
-				var struct_tbl="",s_no=0;
-				for(q=0;q<msg_data.length;q++)
-				{
-					s_no++;
-					var city_id=msg_data[q].city_id;
-					var city_name=msg_data[q].city_name;
-					
-					struct_tbl=struct_tbl+'<tr>'+
-												'<td>'+s_no+'</td>'+
-												'<td>'+city_name+'</td>'+
-												'<td>'+
-													'<button class="btn btn-primary btn-sm btnedit" id="btnedit_'+city_id+'">Edit</button> '+
-													' <button class="btn btn-primary btn-sm btndelete" id="btndelete_'+city_id+'">Delete</button>'+
-												'</td>'+
-										  '</tr>';
-				}
-				$("#tbody_city").html(struct_tbl);
-				
-				$(".btnedit").on("click",function()
-				{
-					var edit_id=$(this).attr('id');
-					var splited_id=edit_id.split('_');
-					
-					var got_edit_id=splited_id[1];
-					get_city_for_edit(got_edit_id);
-				});
-				
-				$(".btndelete").on("click",function()
-				{
-					var edit_id=$(this).attr('id');
-					var splited_id=edit_id.split('_');
-					
-					var got_del_id=splited_id[1];
-					delete_city(got_del_id);
-				});
-				
-				$('#example').DataTable();
-				
-			}
-		}
-	});
-	
-}
-
-
-function delete_city(got_del_id)
-{
-	var r = confirm("Do you Really want to delete this record?");
-	if (r == true)
-	{
-		$.ajax({
-			type:"POST",
-			data:{got_del_id:got_del_id},
-			url:'<?php echo base_url(); ?>delete_city',
-			success:function(msg_data)
-			{
-				alert(msg_data);
-				get_all_cities();
-				add_new();
-			}
-		});
-	}
-	else
-	{
-	}
-}
-
-function get_city_for_edit(got_edit_id)
-{
-	$.ajax({
-		type:"POST",
-		data:{got_edit_id:got_edit_id},
-		url:'<?php echo base_url(); ?>get_city_for_edit',
-		dataType:'json',
-		success:function(msg_data)
-		{
-			if(msg_data.length>0)
-			{
-				for(q=0;q<msg_data.length;q++)
-				{
-					var city_id=msg_data[q].city_id;
-					var city_name=msg_data[q].city_name;
-					
-					$("#txt_city").val(city_name);
-					$("#txt_city_id").val(city_id);
-				}
-				
-				$("#btn_new_city").css("display","inline-block");				
-				$("#btn_update_city").css("display","inline-block");				
-				$("#btn_save_city").css("display","none");				
-				
-			}
-		}
-	});
-	
-}
-
-$("#btn_new_city").on("click",function()
-{
-	add_new();
-});
-
-function add_new()
-{
-	$("#txt_city").val('');				
-	$("#txt_city_id").val('');				
-	$("#btn_new_city").css("display","none");				
-	$("#btn_update_city").css("display","none");				
-	$("#btn_save_city").css("display","inline-block");				
-}
 
 </script>
 
