@@ -83,13 +83,13 @@ body
             <div class="page-title">
               <div class="row">
                 <div class="col-6">
-                  <h3>Mark Sheet</h3>
+                  <h3>Add Mark Sheet</h3>
                 </div>
                 <div class="col-6">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"> <i data-feather="home"></i></a></li>
                     <li class="breadcrumb-item">Mark Sheet</li>
-                    <li class="breadcrumb-item active"> Mark Sheet </li>
+                    <li class="breadcrumb-item active"> Add Mark Sheet </li>
                   </ol>
                 </div>
               </div>
