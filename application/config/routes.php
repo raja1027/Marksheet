@@ -13,6 +13,7 @@ $route['admin_logout'] = 'MainLinks_Control/admin_logout';
 $route['admin_home'] = 'MainLinks_Control/admin_home';
 $route['Add_Mark_Sheet'] = 'MainLinks_Control/Add_Mark_Sheet';
 $route['save_marksheet'] = 'Add_marksheet/save_marksheet';
+$route['chk_roll_no_existance'] = 'Add_marksheet/chk_roll_no_existance';
 
 // $route['getstudents'] = 'Show_marksheet/getstudents';
 $route['getstudents'] = 'Show_marksheet/getstudents_param2';
@@ -21,6 +22,7 @@ $route['getstudents/(:any)/(:any)/(:any)/(:any)'] = 'Show_marksheet/getstudents_
 
 
 $route['students_list'] = 'Show_marksheet_global/students_list';
+$route['students_list/(:num)'] = 'Show_marksheet_global/students_list';
 
 
 

@@ -39,6 +39,13 @@
   </head>
   <body onload="">
 
+<style>
+body
+{
+	font-size: 10px !important;
+}
+</style>
+
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
@@ -83,7 +90,7 @@
 										<?php echo form_open_multipart('students_list'); ?>
 										<div class="form-group">
 											<label>Search Student</label>
-											<input type="text" class="form-control" name="search_all" value="<?php echo $search_all; ?>" placeholder="Search by location" />
+											<input type="text" class="form-control" name="search_all" value="<?php echo $search_all; ?>" placeholder="Search by Student Name" />
 										</div>
 									</div>
 									<div class="col-lg-3">
@@ -149,7 +156,7 @@
 												<td><?php echo $student_list[$i]->stud_name; ?></td>
 												<td><?php echo $student_list[$i]->class; ?></td>
 												<td><?php echo $student_list[$i]->roll_no; ?></td>
-												<td><?php echo $student_list[$i]->passport_size_image; ?></td>
+												<td><img src="<?php echo base_url(); ?>passport_images/<?php echo $student_list[$i]->passport_size_image; ?>" width="100" height="100" /></td>
 												<td><?php echo $student_list[$i]->maths_marks; ?></td>
 												<td><?php echo $student_list[$i]->phy_marks; ?></td>
 												<td><?php echo $student_list[$i]->chem_marks; ?></td>

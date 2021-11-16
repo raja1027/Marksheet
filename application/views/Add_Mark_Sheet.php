@@ -38,6 +38,12 @@
 	
   </head>
   <body onload="">
+<style>
+body
+{
+	font-size: 10px !important;
+}
+</style>
 
 
     <!-- tap on top starts-->
@@ -110,20 +116,29 @@
 							<li><a href="#">Menu 2</a></li>
 							<li><a href="#">Menu 3</a></li>
 						</ul>-->
-<!-- The Modal -->
+<!-- The Modal 
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 
-			<!-- Modal Header -->
 			<div class="modal-header">
 				<h4 class="modal-title">Add Mark Sheet</h4>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 			</div>
 
+		</div>
+	</div>
+</div>			-->		
+						<div class="card">
+							<div class="card-body">
+							
+								<!--<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add Marksheet</button>
+								<hr/>-->
+								
+								
+								
 			<form id="fupForm" enctype="multipart/form-data">
 				<!-- Modal body -->
-				<div class="modal-body">
 						<div class="form-group">
 							<label>Student Name</label>
 							<input type="text" id="student_name" name="student_name" class="form-control" placeholder="Student Name" required />
@@ -208,23 +223,12 @@
 								</tfoot>
 							</table>
 						</div>
-				</div>
-
+<br/>
 			<!-- Modal footer -->
-				<div class="modal-footer">
 					<button type="submit" class="btn btn-success" id="btn_save">Save</button>
 					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-				</div>
 			</form>
 
-		</div>
-	</div>
-</div>					
-						<div class="card">
-							<div class="card-body">
-							
-								<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add Marksheet</button>
-								<hr/>
 								
 								<!--<table class="table table-bordered table-striped table-hover" id="example">
 									<thead>
@@ -319,6 +323,7 @@ $(document).ready(function(e)
 			success:function(msgdata)
 			{
 				alert(msgdata);
+				location.reload();
 			}
 		});
 
@@ -328,29 +333,103 @@ $(document).ready(function(e)
 
 
 
+$("#roll_no").on("focus",function()
+{
+	$("#btn_save").css("display","none");
+});
+
+$("#roll_no").on("blur",function()
+{
+	$("#btn_save").css("display","none");
+	chk_roll_no_existance();
+});
+
+$("#roll_no").on("keyup",function()
+{
+	$("#btn_save").css("display","none");
+	chk_roll_no_existance();
+});
+
+
+function chk_roll_no_existance()
+{
+	var roll_no=$("#roll_no").val();
+	$.ajax({
+		type:"post",
+		data:{roll_no:roll_no},
+		// dataType:"json",
+		url:"<?=base_url('chk_roll_no_existance')?>",
+		success:function(msg)
+		{
+			// alert(msg);
+			if(msg>0)
+			{
+				// $("#roll_no").val("");
+				$("#btn_save").css("display","none");
+				$("#roll_no").focus();
+			}
+			else
+			{
+				$("#btn_save").css("display","inline-block");
+			}
+		}
+	});
+
+}
+
+
+function check_if_grater_than()
+{
+	if($(this).val()>100)
+	{
+		$(this).val("");
+	}
+}
+
+
 $("#maths_marks").on("keyup",function()
 {
 	calculate_total_and_percent();
+	if($(this).val()>100)
+	{
+		$(this).val("");
+	}
 });
 
 $("#phy_marks").on("keyup",function()
 {
 	calculate_total_and_percent();
+	if($(this).val()>100)
+	{
+		$(this).val("");
+	}
 });
 
 $("#chem_marks").on("keyup",function()
 {
 	calculate_total_and_percent();
+	if($(this).val()>100)
+	{
+		$(this).val("");
+	}
 });
 
 $("#hindi_marks").on("keyup",function()
 {
 	calculate_total_and_percent();
+	if($(this).val()>100)
+	{
+		$(this).val("");
+	}
 });
 
 $("#english_marks").on("keyup",function()
 {
 	calculate_total_and_percent();
+	if($(this).val()>100)
+	{
+		$(this).val("");
+	}
 });
 
 

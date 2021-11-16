@@ -8,6 +8,16 @@ class Add_marksheet extends CI_Controller
         parent:: __construct();
     }
 
+	public function chk_roll_no_existance()
+	{
+		$roll_no=$this->input->post('roll_no');
+
+		$data=$this->Add_marksheet_Modal->chk_roll_no_existance($roll_no);
+		
+		echo json_encode($data);
+	}
+		
+		
 	public function save_marksheet()
 	{
 		//echo "dasdasdasd";
