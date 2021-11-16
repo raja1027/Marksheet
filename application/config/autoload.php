@@ -59,7 +59,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 //$autoload['libraries'] = array();
-$autoload['libraries'] = array('database','pagination','session','zip','Authorization_Token'); 
+$autoload['libraries'] = array('database','pagination','session','zip'); 
 
 /*
 | -------------------------------------------------------------------
@@ -135,4 +135,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 //$autoload['model'] = array();
-$autoload['model'] = array('Login_Modal','Add_marksheet_Modal');
+$autoload['model'] = array('Login_Modal','Add_marksheet_Modal','Open_marksheet_Modal');

@@ -1,0 +1,3 @@
+<?php
+class Open_marksheet_Modal extends CI_Model{		    function fetch_getstudents_count($search_all,$short_by,$short_field)    {		        $sql = "select * from student_profile_with_marks where stud_name like '%$search_all%' order by $short_field $short_by";        $query = $this->db->query($sql);        return $query->num_rows();    }		function fetch_getstudents($limit, $start, $search_all,$short_by,$short_field)    {				if ($search_all == "NULL") $search_all = "";		$sql = "SELECT * FROM student_profile_with_marks WHERE stud_name like '%$search_all%' order by $short_field $short_by limit " . $start . ", " . $limit;		$query = $this->db->query($sql);		return $query->result();    }		}
+?>

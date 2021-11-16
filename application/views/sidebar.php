@@ -29,7 +29,7 @@
                   <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="layout"></i><span class="">Mark Sheet</span></a>
                     <ul class="sidebar-submenu">
                       <li><a href="<?php echo base_url(); ?>Add_Mark_Sheet">Add Mark Sheet</a></li>
-                      <li><a href="<?php echo base_url(); ?>View_MarkSheet">View Mark Sheet</a></li>
+                      <li><a href="<?php echo base_url(); ?>getstudents">View Mark Sheet</a></li>
                     </ul>
                   </li>
 

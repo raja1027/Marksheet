@@ -14,6 +14,14 @@ $route['admin_home'] = 'MainLinks_Control/admin_home';
 $route['Add_Mark_Sheet'] = 'MainLinks_Control/Add_Mark_Sheet';
 $route['save_marksheet'] = 'Add_marksheet/save_marksheet';
 
+// $route['getstudents'] = 'Show_marksheet/getstudents';
+$route['getstudents'] = 'Show_marksheet/getstudents_param2';
+
+$route['getstudents/(:any)/(:any)/(:any)/(:any)'] = 'Show_marksheet/getstudents_param/$1/$2/$3/$4';
+
+
+$route['students_list'] = 'Show_marksheet_global/students_list';
+
 
 
 $route['404_override'] = '';
