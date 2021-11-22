@@ -20,7 +20,7 @@
                       <p class="lan-2">Dashboards,widgets & layout.</p>
                     </div>
                   </li>-->
-                  <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="index.php"><i data-feather="home"> </i><span>Dashboard</span></a></li>
+                  <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="<?php echo base_url(); ?>admin_home"><i data-feather="home"> </i><span>Dashboard</span></a></li>
 
                   <!--<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href=""><i data-feather="home"> </i><span>Location Master</span></a></li>
 					-->

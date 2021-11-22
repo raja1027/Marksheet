@@ -115,7 +115,7 @@ $("#btn_login").on("click",function()
 			{
 				msg_data=msg_data.replace(/\n/g, "");
 				console.log(msg_data);
-				if(msg_data!='')
+				if(msg_data==1)
 				{
 					window.location.href='<?php echo base_url(); ?>admin_home';
 					

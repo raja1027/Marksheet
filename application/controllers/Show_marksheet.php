@@ -38,14 +38,16 @@ class Show_marksheet extends CI_Controller
 		$this->load->view('getstudents',$data);
 	}
 
-	public function getstudents_param()
+	// public function getstudents_param($stud_name ="",$class ="null",$roll_no ="null",$total_score_percentage ="null")
+	public function getstudents_param($stud_name,$class,$roll_no,$total_score_percentage)
 	{
 
 		// echo $stud_name =  $this->uri->segment(2);
-		$stud_name =  $this->uri->segment(2);
-		$class =  $this->uri->segment(3);
-		$roll_no =  $this->uri->segment(4);
-		$total_score_percentage =  $this->uri->segment(5);
+		
+		// $stud_name =  $this->uri->segment(2);
+		// $class =  $this->uri->segment(3);
+		// $roll_no =  $this->uri->segment(4);
+		// $total_score_percentage =  $this->uri->segment(5);
 
 		$search_all = isset($_POST['search_all']) ? $_POST['search_all'] : NULL;
 

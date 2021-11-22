@@ -1,9 +1,7 @@
 <?php
 class Login_Modal extends CI_Model
 {
-	/*--- for inserting news---*/
-	function check_login($comp_name,$u_pass)	{
-		$query = $this->db->query("select * from login_user where user_id='".$comp_name."' and password='".$u_pass."'"); 
-		return $query->result();
+	/*--- Login to account ---*/
+	function check_login($comp_name,$u_pass)	{		$this->db->select('*');				$this->db->from('login_user');		$array = array('user_id' => $comp_name, 'password' => $u_pass);		$this->db->where($array); 		$query = $this->db->get();        return $result = $query->result();
 	}		}
 ?>

@@ -35,8 +35,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>links/assets/css/responsive.css">
 	
 	
-  </head>
-  <body onload="startTime()">
+</head>
+
+<body onload="startTime()">
 
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>

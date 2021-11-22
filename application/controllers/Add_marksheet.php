@@ -17,7 +17,7 @@ class Add_marksheet extends CI_Controller
 		echo json_encode($data);
 	}
 		
-		
+	
 	public function save_marksheet()
 	{
 		//echo "dasdasdasd";

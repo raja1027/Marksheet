@@ -93,7 +93,7 @@ body
 								
 								<div class="row">
 	
-									<div class="col-lg-6">
+									<div class="col-lg-6" style="display:none;">
 										<?php echo form_open_multipart('getstudents'); ?>
 										<div class="form-group">
 											<label>Search Student</label>
@@ -123,7 +123,7 @@ body
 											</select>
 										</div>
 									</div>-->
-									<div class="col-lg-2">
+									<div class="col-lg-2" style="display:none;">
 										<br/>
 										<input type="submit" name="submit" value="Search" class="btn btn-primary  btn-success" style="margin-top:8px;" />
 										</form>
